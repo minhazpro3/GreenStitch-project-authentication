@@ -1,9 +1,8 @@
 import Head from "next/head";
-import Image from "next/image";
+
 import styles from "../styles/Home.module.css";
 
-import HomePage from "./home/Home";
-import SignIn from "../components/signIn/SignIn";
+import SignIn from "./../components/signIn/SignIn";
 
 export default function Home() {
   return (
