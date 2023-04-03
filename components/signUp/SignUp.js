@@ -2,10 +2,27 @@ import React from "react";
 import styles from "../../styles/SignIn.module.css";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
+import axios from "axios";
 
 const SignUp = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = async (data) => {
+    if (data.password === data.password1) {
+      try {
+        await axios
+          .post("http://localhost:5000/api/v1/user/signUp", data)
+          .then((res) => {
+            if ((res.status = 200)) {
+              alert("user signup success");
+              reset();
+            }
+          });
+      } catch (error) {
+        alert(error.response.data.message);
+      }
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div>
