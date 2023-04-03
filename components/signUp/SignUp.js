@@ -10,7 +10,7 @@ const SignUp = () => {
     if (data.password === data.password1) {
       try {
         await axios
-          .post("http://localhost:5000/api/v1/user/signUp", data)
+          .post("https://kart-bazar-server.onrender.com/v1/user/signUp", data)
           .then((res) => {
             if ((res.status = 200)) {
               alert("user signup success");

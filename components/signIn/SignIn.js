@@ -11,15 +11,14 @@ const SignIn = () => {
   const onSubmit = async (data) => {
     try {
       await axios
-        .post("http://localhost:5000/api/v1/user/signIn", data)
+        .post("https://kart-bazar-server.onrender.com/api/v1/user/signIn", data)
         .then((res) => {
           if ((res.status = 200)) {
             alert("user SignIn success");
             reset();
-            
+
             router.push("home");
           }
-           
         });
     } catch (error) {
       alert(error);
