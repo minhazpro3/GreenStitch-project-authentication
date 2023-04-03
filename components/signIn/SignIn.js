@@ -2,10 +2,30 @@ import React from "react";
 import styles from "../../styles/SignIn.module.css";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 const SignIn = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const router = useRouter();
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = async (data) => {
+    try {
+      await axios
+        .post("http://localhost:5000/api/v1/user/signIn", data)
+        .then((res) => {
+          if ((res.status = 200)) {
+            alert("user SignIn success");
+            reset();
+            
+            router.push("home");
+          }
+           
+        });
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div>

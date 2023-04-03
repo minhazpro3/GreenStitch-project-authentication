@@ -20,6 +20,8 @@ const SignUp = () => {
       } catch (error) {
         alert(error.response.data.message);
       }
+    } else {
+      alert("Provide password length min 8 & max 15");
     }
   };
 
